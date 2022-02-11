@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZOD_FI_APROB_CONTABLES_SRV" xml:lang="es" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Asientos" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sociedad"/>
+                    <PropertyRef Name="NroDocumento"/>
+                    <PropertyRef Name="Ejercicio"/>
+                </Key>
+                <Property Name="Sociedad" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Sociedad" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="NroDocumento" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Nº documento" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Ejercicio" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Ejercicio" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ClaseDoc" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Clase doc." sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FechaDoc" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Fecha documento" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FechaCont" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Fecha contab." sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Periodo" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Período" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Usuario" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Nombre usuario" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Transaccion" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Cód.transacción" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TxtCabDoc" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Txt.cab.doc." sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Moneda" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Moneda" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TipoCambio" Type="Edm.Decimal" Precision="9" Scale="5" sap:unicode="false" sap:label="Tipo de cambio" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ImpMonLoc" Type="Edm.Decimal" Precision="13" Scale="2" sap:unicode="false" sap:label="Importe ML" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ImpMonDoc" Type="Edm.Decimal" Precision="13" Scale="2" sap:unicode="false" sap:label="Importe" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZOD_FI_APROB_CONTABLES_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="AsientosSet" EntityType="ZOD_FI_APROB_CONTABLES_SRV.Asientos" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="https://darawvlap01.pam.dns:44301/sap/opu/odata/sap/ZOD_FI_APROB_CONTABLES_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://darawvlap01.pam.dns:44301/sap/opu/odata/sap/ZOD_FI_APROB_CONTABLES_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

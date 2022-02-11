@@ -1,0 +1,109 @@
+<mvc:View
+    controllerName="pampa.portalclientes.asientoscontables.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    	xmlns:smartTable="sap.ui.comp.smarttable"
+  xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" 
+  xmlns:core="sap.ui.core"
+  xmlns:layout="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <content> 
+                            <smartFilterBar:SmartFilterBar id="smartFilterBar" 
+      persistencyKey="UniqueAndStablePersistencyKey" 
+      considerSelectionVariants="true" 
+      entitySet="AsientosSet" 
+      useDateRangeType="false" 
+      showClearButton="true">
+      <smartFilterBar:controlConfiguration>
+             <smartFilterBar:ControlConfiguration id="fechaCtrl" key="FechaCont" index="0" label="Fecha Contabilizacion" groupId="_BASIC" 
+          conditionType="sap.ui.comp.config.condition.DateRangeType"/>
+      </smartFilterBar:controlConfiguration>
+            <smartFilterBar:controlConfiguration>
+             <smartFilterBar:ControlConfiguration id="fechaCtrl2" key="FechaDoc" index="1" label="Fecha de Entrada" groupId="_BASIC" 
+          conditionType="sap.ui.comp.config.condition.DateRangeType"/>
+      </smartFilterBar:controlConfiguration>
+            <smartFilterBar:controlConfiguration>
+             <smartFilterBar:ControlConfiguration id="fechaCtrl3" key="Usuario" index="2" label="Usuario" groupId="_BASIC" 
+          />
+      </smartFilterBar:controlConfiguration>
+            <smartFilterBar:controlConfiguration>
+             <smartFilterBar:ControlConfiguration id="fechaCtrl4" key="Sociedad" index="3" label="Sociedad" groupId="_BASIC" />
+      </smartFilterBar:controlConfiguration>
+            <smartFilterBar:controlConfiguration>
+             <smartFilterBar:ControlConfiguration id="fechaCtrl5" key="ClaseDoc" index="4" label="Clase de Documento" groupId="_BASIC" 
+          />
+             <smartFilterBar:ControlConfiguration id="fechaCtrl6" key="ClaseDoc" index="5" label="Clase de Documento" groupId="_BASIC" 
+           visible="false"/>
+      </smartFilterBar:controlConfiguration>
+      </smartFilterBar:SmartFilterBar>
+              <smartTable:SmartTable id="Asientos" 
+                        persistencyKey="SmartTableAnalytical_Explored"
+                        entitySet="AsientosSet"
+                        smartFilterId="smartFilterBar" 
+                        tableType="ResponsiveTable" 
+                        useExportToExcel="true" 
+                        beforeExport="onBeforeExport" 
+                        useVariantManagement="true" 
+                        useTablePersonalisation="true" 
+                        header="Asientos Contables" 
+                        showRowCount="true" 
+                        enableAutoBinding="true" 
+                        beforeRebindTable="onBeforeRebindTable"
+                        demandPopin="true"
+                        ignoredFields=""
+                        initiallyVisibleFields="NroDocumento,FechaCont,FechaDoc,ImpMonDoc,ImpMonLoc,Sociedad"
+                        requestAtLeastFields="Ejercicio"
+                        class="sapUiResponsiveContentPadding">
+                        <smartTable:layoutData>
+                        <FlexItemData xmlns="sap.m" id="FlexItemData" baseSize="0%"/>
+                      </smartTable:layoutData>
+                      <smartTable:items>
+                      <Table xmlns="sap.m" mode="MultiSelect" id="TablaFactura" noDataText="Drop column list items here and columns in the area above" growing="true" updateFinished=".onTableUpdateFinished" sticky="ColumnHeaders">
+                        <columns>
+                    <Column id="_IDGenColumn12">
+                    <customData> 
+                      <core:CustomData key="p13nData" value='\{"columnKey": "FechaDoc", "leadingProperty": "FechaDoc", "sortProperty": "FechaDoc", "filterProperty": "FechaDoc", "columnIndex": 1}'/>
+                    </customData>
+                    <Label id="_IDGenLabel12" text="Fecha Documento"/>
+                  </Column>
+                  <Column id="_IDGenColumn">
+                    <customData> 
+                      <core:CustomData key="p13nData" value='\{"columnKey": "FechaCont", "leadingProperty": "FechaCont", "sortProperty": "FechaCont", "filterProperty": "FechaCont", "columnIndex": 2}'/>
+                    </customData>
+                    <Label id="_IDGenLabel" text="Fecha contabilizacion"/>
+                  </Column>
+                  <Column id="_IDGenColumn1">
+                    <customData> 
+                      <core:CustomData key="p13nData" value='\{"columnKey": "TipoCambio", "leadingProperty": "TipoCambio", "sortProperty": "TipoCambio", "filterProperty": "TipoCambio", "columnIndex": 7}'/>
+                    </customData>
+                    <Label id="_IDGenLabel1" text="Boton para Aprobar"/>
+                  </Column>
+                  </columns>
+                  <ColumnListItem id="_IDGenColumnListItem1" type="Navigation" press=".onPress">
+                <cells> 
+                  <ObjectAttribute id="Fecha1-field" text="{path:'FechaDoc', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', UTC: true}}"/>
+                  <ObjectAttribute id="Fecha-field" text="{path:'FechaCont', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', UTC: true}}"/>
+                  <ToggleButton id="ToggleButtonAprobar" text="Aprobar" press="onAprobar" type="Accept"/>
+                </cells>
+                </ColumnListItem>
+                      </Table>
+                      </smartTable:items>
+                      </smartTable:SmartTable>
+                      
+                    </content>
+                    <footer>
+                    <OverflowToolbar>
+                        <ToolbarSpacer/>
+                        <Button type="Accept" text="Aprobar"/>
+                    </OverflowToolbar>
+                </footer>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

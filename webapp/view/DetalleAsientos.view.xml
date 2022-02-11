@@ -1,0 +1,89 @@
+<mvc:View
+    controllerName="pampa.portalclientes.asientoscontables.controller.DetalleAsientos"
+    xmlns:mvc="sap.ui.core.mvc"
+    	xmlns:smartTable="sap.ui.comp.smarttable"
+  xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" 
+  xmlns:core="sap.ui.core"
+  xmlns:layout="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Shell id="shell">
+        <App id="app">
+        <pages>
+                <Page id="page" title="{i18n>Detailtitle}">
+<ObjectHeader
+		id="oh1"
+		responsive="true"
+		fullScreenOptimized="true"
+		intro=""
+		title="Detalle de Asientos"
+		number=""
+		backgroundDesign="Translucent" >
+		<ObjectAttribute
+			title="Numero de Documento"
+			text="{detailModel>/nroDocDetail}"/>
+		<ObjectAttribute
+			title="Sociedad"
+			text="{detailModel>/sociedadDetail}"/>
+		<ObjectAttribute
+			title="Ejercicio"
+			text="{detailModel>/ejercicioDetail}"/>
+		<headerContainer>
+			<IconTabBar
+				id="itb1"
+				selectedKey="key3"
+				upperCase="true"
+				class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter
+						icon="sap-icon://hint"
+                        count="{detailModel>/detailCount}">
+						<smartTable:SmartTable id="Posiciones" 
+                        persistencyKey="SmartTableAnalytical_Explored"
+                        entitySet="PosicionesSet"
+                        tableBindingPath="{detailModel>/bindingPath}"
+                        smartFilterId="smartFilterBar" 
+                        tableType="ResponsiveTable" 
+                        useExportToExcel="true" 
+                        beforeExport="onBeforeExport" 
+                        useVariantManagement="true" 
+                        useTablePersonalisation="true" 
+                        header="Posiciones de Asientos Contables" 
+                        showRowCount="true" 
+                        enableAutoBinding="true" 
+                        beforeRebindTable="onBeforeRebindTable"
+                        demandPopin="true"
+                        ignoredFields=""
+                        initiallyVisibleFields="NroDocumento,Sociedad,Ejercicio,Cuenta,ImporteMD,ImporteML,Posicion"
+                        requestAtLeastFields=""
+                        class="sapUiResponsiveContentPadding">
+                        <smartTable:layoutData>
+                        <FlexItemData xmlns="sap.m" id="FlexItemData" baseSize="0%"/>
+                      </smartTable:layoutData>
+                      <smartTable:items>
+                      <Table xmlns="sap.m" mode="None" id="tablaDetalle" noDataText="Drop column list items here and columns in the area above" growing="true" updateFinished=".onTableUpdateFinished" sticky="ColumnHeaders">
+                        <columns>
+                  </columns>
+                  <ColumnListItem id="_IDGenColumnListItem1">
+                <cells> 
+                </cells>
+                </ColumnListItem>
+                      </Table>
+                      </smartTable:items>
+                      </smartTable:SmartTable>
+					</IconTabFilter>
+					<IconTabFilter
+						icon="sap-icon://attachment"
+						count="{detailModel>/attatchmentCount}">
+						
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</headerContainer>
+	</ObjectHeader>
+                </Page>
+        </pages>
+        </App>
+    </Shell>
+</mvc:View>
